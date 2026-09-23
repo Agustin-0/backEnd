@@ -1,5 +1,5 @@
 import express from 'express';
-import { createUser, deleteUser, getUsers} from '../controllers/userController.js';
+import { createUser, deleteUser, getUsers, updateUser, validate} from '../controllers/userController.js';
 
 export const userRoute = express.Router()
 
@@ -10,3 +10,5 @@ export const userRoute = express.Router()
 userRoute.post("/create", createUser)
 userRoute.get("/getUsers", getUsers) // En esta ruta se invocaria a un una funcion de controller
 userRoute.delete("/deleteUser/:id", deleteUser)
+userRoute.put("/updateUser/:id", updateUser)
+userRoute.post("/login", validate)

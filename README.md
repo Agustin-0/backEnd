@@ -36,3 +36,16 @@ Puntos clave
 - El valor siempre llega como string ("5"), aunque sea un número.
 - A diferencia de los datos del body (que van en req.body desde el JSON), los param vienen "pegados" en la URL, por eso se leen de req.params.
 La ruta que tenés en el comentario (api/user/delete/:id) no coincide con lo que realmente está en el archivo (api/user/deleteUser/:id), pero el mecanismo es idéntico.
+
+### Como crear un usuario
+
+Tenes que enviar en el body de la request algo asi
+```
+{
+  "name": "noName",
+  "lastName": "the boos",
+  "email": "noName@gmail.com",
+  "age": "20",
+  "password": "noName0.@"
+}
+```

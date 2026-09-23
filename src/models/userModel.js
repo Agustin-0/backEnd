@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { isGoodPassword } from '../utils/validators.js';
+import bcrypt from 'bcrypt'
 
 const userSchema =  new mongoose.Schema({
     name: {
@@ -48,6 +49,13 @@ const userSchema =  new mongoose.Schema({
         
     }
 }, {timestamps: true})
+
+// Mongoose permite encriptar antes de guardar la password
+userSchema.pre("save", function (next) {
+    // Encriptamos la password antes de guardarla
+    this.password = bcrypt.hashSync(this.password, 10)
+})
+
 
 //faltaria agregar encryptacion a la contraseña
 
