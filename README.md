@@ -49,3 +49,19 @@ Tenes que enviar en el body de la request algo asi
   "password": "noName0.@"
 }
 ```
+
+## Utils y Helpers como diferenciarlos?
+
+Hacete la pregunta... 
+¿Es generico? utis
+¿Es mas de sistema? Helper 
+
+### utils
+
+ Los utils son genericos, no deben estar relacionados con nuestro sistema.
+
+
+
+### Helpers 
+
+Son implementaciones mas relacionadas con nuestro sistema para usar en varios casos. Se relacionan con el service y la base de datos

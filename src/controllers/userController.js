@@ -1,4 +1,4 @@
-import { createUserService, getUsersService, deleteUserService, updateUserService, validateUserServide } from "../services/userService.js"
+import { createUserService, getUsersService, deleteUserService, updateUserService, validateUserService } from "../services/userService.js"
 // Controladores: reciben las solicitudes, las procesan( las envian a servicion) y responden 
 
 //crear usuarios
@@ -15,7 +15,7 @@ export const createUser = async (req, res) => {
 export const getUsers = async (req, res) => {
     try{
         const users = await getUsersService()
-        res.status(201).json(users)
+        res.status(200).json(users)
     } catch (error) {
         console.log({error})
         if(error.statusCode === 204){
@@ -54,15 +54,18 @@ export const updateUser = async (req, res) => {
     }
 }
 
+// Autenticar/Validar al usuario
+
 export const validate = async (req, res) => {
     try {
-        const {email, password} = req.body;
-        const result = await validateUserServide(email, password);
+        // Tomamos los datos que nos mandan en el req
+        const { email, password } = req.body;
+        const result = await validateUserService(email, password)
         return res.status(200).json(result)
     } catch (error) {
-        if(error.statusCode === 400) {
-            return res.status(400).json({message: error.message})
+        if(error.statusCode === 400){
+            return res.status(error.statusCode).json({ message: error.message})
         }
-        return res.status(500).json({message: "internal server error", error: error.message})
+        return res.status(500).json({message: "internal sercer errorrrrr", error: error.message })
     }
 }

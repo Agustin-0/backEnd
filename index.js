@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser'
 import { userRoute } from './src/Router/useRouter.js'
 import { connectDB } from './db.js';
-import { PORT } from './config.js';
+import { PORT, SECRET } from './config.js';
 import session from 'express-session';
 
 
@@ -11,16 +11,16 @@ connectDB()
 
 // Middlewares -> Software del medio - Entre dos sistemas
 // Parsear a json las solicitudes es indispensable para poder leer lo que llega
-app.use(bodyParser.json())
+app.use(bodyParser.json()) //middleware a nivel global
 
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({extended: true})) //middleware a nivel global
 
 // Generamos el uso de la sesion
 app.use(
     session({
-        secret: "secret", // Dato unico de nuestro sistema, sirve para firmar la sesion y que no pueda ser modificada
-        resave: false, // Evita que la sesion se vuelva a guardar si no hay datos(para seguridad)
-        saveUninitialized: false, // Evita que se guarde una sesion no inicializada(para seguridad)
+        secret: SECRET, //DATO UNICO DE NUESTRO SISTEMA
+        resave: false, //evita que la sesion se vuelva a guardar si no hay datos
+        saveUninitialized: false, // Evita que se guarde una sesion no inicializada
     })
 )
 

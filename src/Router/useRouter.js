@@ -1,5 +1,6 @@
 import express from 'express';
 import { createUser, deleteUser, getUsers, updateUser, validate} from '../controllers/userController.js';
+import {verifyTokenMiddleware} from '../middlewares/verifyTokenMiddleware.js'
 
 export const userRoute = express.Router()
 
@@ -8,7 +9,8 @@ export const userRoute = express.Router()
 //Endpoints
 // Verbo http +  path + controller + service
 userRoute.post("/create", createUser)
-userRoute.get("/getUsers", getUsers) // En esta ruta se invocaria a un una funcion de controller
-userRoute.delete("/deleteUser/:id", deleteUser)
-userRoute.put("/updateUser/:id", updateUser)
+// En estas ruta esta Verbo http + middleware + path + controller + service
+userRoute.get("/getUsers", verifyTokenMiddleware, getUsers) 
+userRoute.delete("/deleteUser/:id", verifyTokenMiddleware, deleteUser)
+userRoute.put("/updateUser/:id", verifyTokenMiddleware ,updateUser)
 userRoute.post("/login", validate)

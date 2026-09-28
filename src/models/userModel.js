@@ -51,9 +51,14 @@ const userSchema =  new mongoose.Schema({
 }, {timestamps: true})
 
 // Mongoose permite encriptar antes de guardar la password
+// seria una especie middleware porque esta entre los datos.
+// next esta en los middlewares
 userSchema.pre("save", function (next) {
     // Encriptamos la password antes de guardarla
     this.password = bcrypt.hashSync(this.password, 10)
+    // next()
+    //Si pongo la funcion me da error en la creacion de un user
+    //se hace automaticamnete por lo que dice opencode pero no encuentro docu que respalde eso
 })
 
 
