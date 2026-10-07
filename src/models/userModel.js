@@ -48,7 +48,9 @@ const userSchema =  new mongoose.Schema({
         }
         
     }
-}, {timestamps: true})
+}, {
+    //Cuando se cree y se modifique se guardan los timestamps
+    timestamps: true})
 
 // Mongoose permite encriptar antes de guardar la password
 // seria una especie middleware porque esta entre los datos.

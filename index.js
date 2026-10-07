@@ -4,6 +4,8 @@ import { userRoute } from './src/Router/useRouter.js'
 import { connectDB } from './db.js';
 import { PORT, SECRET } from './config.js';
 import session from 'express-session';
+import { categoryRoute } from './src/Router/categoryRouter.js';
+import { productRoute } from './src/Router/productRouter.js';
 
 
 const app = express();
@@ -27,6 +29,8 @@ app.use(
 //Esto dice "Si la peticion empieza por '/api/users' dejala pasar por las hacia las rutas
 // definidas en userRoute"
 app.use("/api/users", userRoute)
+app.use("/api/category", categoryRoute)
+app.use("/api/product", productRoute)
 
 app.listen( PORT, () => {
     console.log(`Example app listen in port ${PORT}`)

@@ -50,6 +50,26 @@ Tenes que enviar en el body de la request algo asi
 }
 ```
 
+### Como crear un producto
+```
+urlLocal = "http://localhost:3000/api/product/create"
+
+{
+  "name": "cama",
+  "price": "200000",
+  "profitRate": 1.30,
+  "description": "Una cama para acostary dormir comodamente",
+  "status": "AVAILABLE",
+  "stock": 50,
+  "Highlighted": true,
+  "category": "6ac3dfea6f57862fa93e4e9f"
+}
+```
+
+### Como traer un producto
+
+urlLocal = http://localhost:3000/api/product/
+
 ## Utils y Helpers como diferenciarlos?
 
 Hacete la pregunta... 
