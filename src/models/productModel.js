@@ -91,7 +91,9 @@ const productSchema = new mongoose.Schema({
     // facilita mucho que pudamos hacer calculos con nuestro propios valores
     // sin escribirlos como tal
     // NO se ejecuta automaticamente, entonces lo incluimos donde necesitamos
-    // restar stock  
+    // restar stock
+    //datos pre calculados, no es que lo escribas como tal, toma un valor de un precio
+    //que si decalras, y toma ese precio y le suma un porcentaje  
     productSchema.virtual("priceWithProfitRate").get(function(){
         return this.price * this.profitRate
     })
