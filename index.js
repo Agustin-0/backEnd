@@ -6,9 +6,17 @@ import { PORT, SECRET } from './config.js';
 import session from 'express-session';
 import { categoryRoute } from './src/Router/categoryRouter.js';
 import { productRoute } from './src/Router/productRouter.js';
+import cors from 'cors'
 
 
 const app = express();
+
+//cors sirve para que el backEnd pueda recibir solicitudes desde el frontEnd
+app.use(cors({
+    origin: "*", // * es para aceptar TODOS los origenes de cualquier ip/ puerto
+    methods: ["GET", "POST", "DELETE", "PATCH"]// estos son los metodos que acepta
+}))
+
 connectDB()
 
 // Middlewares -> Software del medio - Entre dos sistemas
